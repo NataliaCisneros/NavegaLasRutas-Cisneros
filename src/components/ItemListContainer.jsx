@@ -1,4 +1,31 @@
+import { useEffect, useState} from "react"
+import { getProducts } from "../utils/getProducts"
+import ItemList from "./ItemList"
+import { useParams } from "react-router-dom"
+
 function ItemListContainer(props){
-    return <h1>{props.gretting}</h1>
+    const [products, setProducts] = useState([])
+    const {categoryId} = useParams()
+    const [loading, setLoading] = useState(true)
+
+    useEffect(()=>{
+        getProducts()
+        .then((productsFromPromise)=> {
+            setProducts(productsFromPromise)
+            setLoading(false)
+        })
+        .catch((error)=> console.log(error))
+    },[])
+
+    if(loading) return (
+        <div><h4>Cargando...</h4>
+        </div>
+    )
+
+    return (
+     <div>
+        <ItemList products={products}></ItemList>
+     </div>
+    )
 }
 export default ItemListContainer 
