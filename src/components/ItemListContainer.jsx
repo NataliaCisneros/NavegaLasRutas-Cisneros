@@ -9,13 +9,14 @@ function ItemListContainer(props){
     const [loading, setLoading] = useState(true)
 
     useEffect(()=>{
-        getProducts()
+        setLoading(true)
+        getProducts(categoryId)
         .then((productsFromPromise)=> {
             setProducts(productsFromPromise)
             setLoading(false)
         })
         .catch((error)=> console.log(error))
-    },[])
+    },[categoryId])
 
     if(loading) return (
         <div><h4>Cargando...</h4>

@@ -7,7 +7,7 @@ function  Navbar(){
             <Link to="/">logo</Link>
             
             <Link to="/category/accesorio" >Accesorios</Link>
-            <Link to="/category/alahaja" >Alhajas</Link>
+            <Link to="/category/alhaja" >Alhajas</Link>
             <Link to="/category/complemento" >Complementos</Link>
             <CartWidget></CartWidget>
         </div>
